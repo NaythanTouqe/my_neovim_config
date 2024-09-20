@@ -1,6 +1,4 @@
 -- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -24,7 +22,7 @@ vim.opt.smartcase = true
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
@@ -34,8 +32,9 @@ vim.opt.scrolloff = 8
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<Esc><cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-c>', '<Esc><cmd>nohlsearch<CR>')
+vim.keymap.set('c', '<C-c>', '<Esc><cmd>nohlsearch<CR>')
 
 -- --  See `:help wincmd` for a list of all window commands
 -- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -45,15 +44,8 @@ vim.keymap.set('n', '<C-c>', '<Esc><cmd>nohlsearch<CR>')
 
 local vscode = require('vscode')
 
-vim.api.nvim_create_user_command('Explore', function ()
+vim.api.nvim_create_user_command('Exv', function ()
   vscode.call('workbench.files.action.focusFilesExplorer')
 end, {})
-
--- vim.keymap.set('n', '\\', function ()
---   vscode.call('workbench.files.action.focusFilesExplorer')
--- end, {})
-
-
-
 
 
